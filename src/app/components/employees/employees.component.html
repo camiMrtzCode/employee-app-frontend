@@ -1,0 +1,42 @@
+<div class="card text-center">
+  <div class="card-header">
+    <h1>Employees List</h1>
+  </div>
+  <br>
+  <div class="row">
+    <div class="mx-auto col-10 col-md-8 col-lg-6">
+      <form class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="col-12">
+          <label class="visually-hidden" for="inlineFormInputGroupSearch">Search</label>
+          <input type="search" [(ngModel)]='searchId' class="form-control" id="inlineFormInputGroupSearch" placeholder="Search by ID" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" (click)='search()'>Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Montly Salary</th>
+          <th>Anual Salary</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let employee of employees">
+          <th>{{ employee.id }}</th>
+          <th>{{ employee.employee_name }}</th>
+          <th>{{ employee.employee_age }}</th>
+          <th>{{ employee.employee_salary | currency: 'USD' : 'symbol' : '1.0-0' }} </th>
+          <th>{{ employee.employee_anual_salary | currency: 'USD' : 'symbol' : '1.0-0' }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
